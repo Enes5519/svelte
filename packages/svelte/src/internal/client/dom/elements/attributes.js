@@ -245,7 +245,7 @@ export function set_custom_element_data(node, prop, value) {
 			// We did getters etc checks already, stringify before passing to set_attribute
 			// to ensure it doesn't invoke the same logic again, and potentially populating
 			// the setters cache too early.
-			set_attribute(node, prop, value == null ? value : String(value));
+			set_attribute(node, prop, value == null || value === false ? null : String(value));
 		}
 	} finally {
 		set_active_reaction(previous_reaction);
